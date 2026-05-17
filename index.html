@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EBS VOCA 1800 Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom animation for fading in content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        /* 카드 전환 애니메이션 */
+        @keyframes cardEnter {
+            from { opacity: 0; transform: scale(0.95) rotateX(-10deg); }
+            to { opacity: 1; transform: scale(1) rotateX(0deg); }
+        }
+        .animate-card-enter {
+            animation: cardEnter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* 버튼 클릭 시 시각적 피드백 */
+        button:active {
+            transform: scale(0.96);
+            transition: transform 0.1s;
+        }
+
+        .star-button.bookmarked svg {
+            fill: #facc15; /* yellow-400 */
+            stroke: #facc15; /* yellow-400 */
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Noto Sans KR', 'sans-serif'],
+              montserrat: ['Montserrat', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center p-4 font-sans">
+      <div class="w-full max-w-3xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+          
+          <header class="bg-gradient-to-br from-gray-600 via-blue-600 to-indigo-500 text-white p-8 text-center">
+            <h1 class="text-4xl font-bold font-montserrat tracking-tight">수능 영단어 학습기</h1>
+            <p class="mt-2 text-lg text-blue-100">
+              하루 10분, 자투리 시간을 활용해<br />
+              EBS 연계교재 핵심 1800단어를 마스터하세요!
+            </p>
+          </header>
+
+          <main class="p-6 md:p-10 flex flex-col items-center gap-8">
+            <div class="w-full flex flex-col items-center justify-center gap-4">
+              <select id="day-selector" class="p-3 border-2 border-gray-300 rounded-lg text-lg bg-teal-50 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition w-full max-w-xs">
+                <option value="" disabled selected>학습할 Day를 선택하세요</option>
+              </select>
+              
+              <div class="w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                <div id="mode-selector" class="flex items-center justify-center gap-2 p-1 bg-gray-200 rounded-lg">
+                  <button data-mode="normal" class="mode-button px-4 py-2 text-sm font-medium rounded-md transition-colors bg-blue-600 text-white shadow">
+                    일반 학습
+                  </button>
+                  <button data-mode="drawer" class="mode-button px-4 py-2 text-sm font-medium rounded-md transition-colors text-gray-600 hover:bg-gray-300">
+                    서랍
+                  </button>
+                </div>
+                <div id="study-mode-toggle" class="flex items-center justify-center gap-2 p-1 bg-gray-200 rounded-lg">
+                  <button data-mode="en-ko" class="study-mode-button px-4 py-2 text-sm font-medium rounded-md transition-colors bg-green-600 text-white shadow">
+                    영단어 → 뜻
+                  </button>
+                  <button data-mode="ko-en" class="study-mode-button px-4 py-2 text-sm font-medium rounded-md transition-colors text-gray-600 hover:bg-gray-300">
+                    뜻 → 영단어
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="voca-card-container" class="w-full">
+              </div>
+          </main>
+        </div>
+        <footer class="text-center text-gray-500 text-sm py-4">
+          <p>© 2025 KH KIM. All Rights Reserved.</p>
+        </footer>
+      </div>
+    </div>
+    <script src="voca-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
