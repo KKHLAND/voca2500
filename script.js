@@ -297,10 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.study-mode-button').forEach(btn => {
             const isSelected = btn.dataset.mode === studyMode;
             // 기존 blue 클래스와 새로운 green 클래스를 모두 제거 리스트에 추가
-            btn.classList.remove('bg-blue-600', 'text-blue-600', 'bg-green-600', 'shadow', 'text-gray-600', 'hover:bg-gray-300', 'text-white');
+            btn.classList.remove('bg-blue-600', 'text-blue-600', 'bg-green-600', 'bg-yellow-500', 'shadow', 'text-gray-600', 'hover:bg-gray-300', 'text-white');
             if (isSelected) {
-                // 선택된 버튼에 green 클래스 추가
-                btn.classList.add('bg-green-600', 'text-white', 'shadow');
+                btn.classList.add('bg-yellow-500', 'text-white', 'shadow');
             } else {
                 btn.classList.add('text-gray-600', 'hover:bg-gray-300');
             }
