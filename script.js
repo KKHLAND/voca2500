@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderVocaCard = () => {
         if (!selectedDayData || selectedDayData.words.length === 0) {
-            let message = "학습할 Day를 선택해 주세요.";
+            let message = "학습할 Unit을 선택해 주세요.";
             if (currentMode === 'drawer') {
                 message = "서랍이 비어있습니다. 단어에 별표를 눌러 추가해 보세요.";
             }
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.vocaData.forEach(d => {
                 const option = document.createElement('option');
                 option.value = d.day;
-                option.textContent = `Day ${d.day}`;
+                option.textContent = `Unit ${d.day}`;
                 daySelector.appendChild(option);
             });
         }
